@@ -9,13 +9,13 @@ STARTING_PWD=$PWD
 # Move to current-server directory to do most of our work
 cd ${DIR}/current-server/
 
-echo "\n### Stopping previous instance"
+echo "### Stopping previous instance"
 # Check if the screen instance exists first
 if ! screen -list | grep -q "minecraft"; then
     screen -X -S minecraft quit
 fi
 
-echo "\n### Backing up server"
+echo "### Backing up server"
 if [ "$(ls -A $PWD)" ]; then
     echo "# Creating backup directory ${BACKUP_DIR}"
     mkdir ${BACKUP_DIR}
@@ -36,11 +36,11 @@ else
     echo "No files to back up, skipping.."
 fi
 
-echo "\n### Copying fresh server files into place"
+echo "### Copying fresh server files into place"
 cp ${DIR}/fresh-files/* ${DIR}/current-server -r
 
-echo "\n### Starting server"
+echo "### Starting server"
 screen -S minecraft -dm bash -c ./LaunchServer.sh
 cd ${STARTING_PWD}
 
-echo "\n### Done"
+echo "### Done"
