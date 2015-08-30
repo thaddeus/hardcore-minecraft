@@ -16,21 +16,25 @@ if ! screen -list | grep -q "minecraft"; then
 fi
 
 echo "\n### Backing up server"
-echo "# Creating backup directory ${BACKUP_DIR}"
-mkdir ${BACKUP_DIR}
-echo "# Compressing old server"
-tar -zcvf server.tar.gz *
-echo "# Moving backup"
-mv ${DIR}/current-server/server.tar.gz ${BACKUP_DIR}
-echo "# Clearing old files"
-rm -r *
-echo "# Creating user friendly symlink"
-${SERVER_COUNT}=1
-while [[ -d "${DIR}/old-servers/server${SERVER_COUNT}" ]] ; do
-    let ${SERVER_COUNT}++
-done
-ln -s ${BACKUP_DIR} ${DIR}/old-servers/server${SERVER_COUNT}
-echo "Created symlink server${SERVER_COUNT}"
+if [ "$(ls -A $PWD)" ]; then
+    echo "# Creating backup directory ${BACKUP_DIR}"
+    mkdir ${BACKUP_DIR}
+    echo "# Compressing old server"
+    tar -zcvf server.tar.gz *
+    echo "# Moving backup"
+    mv ${DIR}/current-server/server.tar.gz ${BACKUP_DIR}
+    echo "# Clearing old files"
+    rm -r *
+    echo "# Creating user friendly symlink"
+    ${SERVER_COUNT}=1
+    while [[ -d "${DIR}/old-servers/server${SERVER_COUNT}" ]] ; do
+        let ${SERVER_COUNT}++
+    done
+    ln -s ${BACKUP_DIR} ${DIR}/old-servers/server${SERVER_COUNT}
+    echo "Created symlink server${SERVER_COUNT}"
+else
+    echo "No files to back up, skipping.."
+fi
 
 echo "\n### Copying fresh server files into place"
 cp ${DIR}/fresh-files/* ${DIR}/current-server -r

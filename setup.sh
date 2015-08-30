@@ -8,3 +8,6 @@ mkdir ${DIR}/current-server
 mkdir ${DIR}/fresh-files
 mkdir ${DIR}/old-servers
 mkdir ${DIR}/old-servers/servers
+
+echo "# Installing screen"
+sudo apt-get install screen
