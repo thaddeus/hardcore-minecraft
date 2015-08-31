@@ -26,9 +26,9 @@ if [ "$(ls -A $PWD)" ]; then
     echo "# Clearing old files"
     rm -r *
     echo "# Creating user friendly symlink"
-    ${SERVER_COUNT}=1
+    SERVER_COUNT=1
     while [[ -d "${DIR}/old-servers/server${SERVER_COUNT}" ]] ; do
-        let ${SERVER_COUNT}++
+        ((SERVER_COUNT+=1))
     done
     ln -s ${BACKUP_DIR} ${DIR}/old-servers/server${SERVER_COUNT}
     echo "Created symlink server${SERVER_COUNT}"
