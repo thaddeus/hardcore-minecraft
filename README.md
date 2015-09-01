@@ -5,7 +5,7 @@ Helper scripts for managing minecraft servers that need to be reset often.
 When configured, this is the primary script you'll want to deal with for 
 your hardcore world management. 
 
-Running `reset.sh` will do the following
+Running `reset.sh [seed]` will do the following
 
 1. Stop any existing screen session with the sockname `minecraft`
 2. Create a backup of your instance (if needed)
@@ -14,6 +14,7 @@ Running `reset.sh` will do the following
   * Creates a symlinked directory with a version number
 3. Clears the old files
 4. Copies a fresh server into place
+  * Will replace `level-seed` in `server.properties` with optional seed
 5. Starts a new detached screen session running LaunchServer.sh
 
 You should now have a fresh (loading) server in place of your old one.
@@ -28,3 +29,19 @@ You should now have a fresh (loading) server in place of your old one.
   * Configure your `server.properties` the way you want it
   * Make sure the fresh-files doesn't have any state data (world, saves)
 4. Start your first world by running `reset.sh`
+
+## Downloaders
+These are scripts that will help make the process of obtaining server
+updates from mod-pack providers easier.
+
+Right now we just have an ATLauncher script, but feel free to add your own
+and contribute back to the repo with scripts for other providers.
+
+#### ATLauncher
+Run the script by inputting the URL to the modpack page at the argument to the
+script.
+
+Example: `atlauncher.sh https://www.atlauncher.com/pack/TheMadPack`
+
+The script will find the "Download Server" link, and fake a normal browser
+client to retrieve the server package.
