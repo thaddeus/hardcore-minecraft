@@ -41,7 +41,8 @@ and contribute back to the repo with scripts for other providers.
 Run the script by inputting the URL to the modpack page at the argument to the
 script.
 
-Example: `atlauncher.sh https://www.atlauncher.com/pack/TheMadPack`
+Format: `atlauncher.sh URL [download location]`
+Example: `atlauncher.sh https://www.atlauncher.com/pack/TheMadPack [madpack_server.zip]`
 
 The script will find the "Download Server" link, and fake a normal browser
 client to retrieve the server package.
