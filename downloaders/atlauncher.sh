@@ -6,7 +6,7 @@ wgets ${1} -O /tmp/atl_dl_page
 download_link=`grep -o -E "[\"']http:\/\/fs.atlcdn.net(.*)[\"']" /tmp/atl_dl_page`
 if [ ! -z "${download_link}" ]; then
     echo "# Found link ${download_link}"
-    wgets ${download_link} -O ${2}
+    wgets "${download_link//\"}" -O atl_server.zip
 else
     echo "# Unable to find link, quitting"
     exit 1
