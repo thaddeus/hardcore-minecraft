@@ -49,6 +49,7 @@ Run the script by inputting the URL to the modpack page at the argument to the
 script.
 
 Format: `atlauncher.sh URL [download location]`
+
 Example: `atlauncher.sh https://www.atlauncher.com/pack/TheMadPack [madpack_server.zip]`
 
 The script will find the "Download Server" link, and fake a normal browser
