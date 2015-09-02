@@ -19,6 +19,13 @@ Running `reset.sh [seed]` will do the following
 
 You should now have a fresh (loading) server in place of your old one.
 
+## Launch
+Should your world need a restart (without a reset) or you just want a quick
+way to launch your server, then use `launch.sh`
+
+Launch will stop any existing screen socks named `minecraft` then start a new
+one for you.
+
 ## Setup
 1. Run `setup.sh`
   * This creates the necessary directory structure
